@@ -13,8 +13,14 @@ async function getAllQuestions() {
     return questions;
 }
 
+async function getQuestionById(questionId: number) {
+    const question = await questionRepository.selectQuestionById(questionId);
+    return question;
+}
+
 const questionService = {
     create,
-    getAllQuestions
+    getAllQuestions,
+    getQuestionById
 };
 export default questionService;

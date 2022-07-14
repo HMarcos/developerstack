@@ -1,4 +1,3 @@
-// TODO
 import { prisma } from "../config/database.js";
 import { CreateAnswerData } from "../services/answerService.js";
 

@@ -10,9 +10,27 @@ async function selectAllQuestions() {
     return questions;
 }
 
+async function selectQuestionById(questionId: number) {
+    const question = await prisma.question.findUnique({
+        where: {
+            id: questionId
+        },
+        include: {
+            answers: {
+                select: {
+                    answer: true
+                }
+            }
+        }
+    });
+
+    return question;
+}
+
 const questionRepository = {
     insertQuestion,
-    selectAllQuestions
+    selectAllQuestions,
+    selectQuestionById
 };
 
 export default questionRepository;

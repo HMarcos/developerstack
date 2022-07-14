@@ -8,7 +8,13 @@ async function create(question: string) {
     await questionRepository.insertQuestion(createQuestionData);
 }
 
+async function getAllQuestions() {
+    const questions = await questionRepository.selectAllQuestions();
+    return questions;
+}
+
 const questionService = {
-    create
+    create,
+    getAllQuestions
 };
 export default questionService;

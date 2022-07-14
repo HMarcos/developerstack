@@ -5,8 +5,14 @@ async function insertQuestion(createQuestionData: CreateQuestionData) {
     await prisma.question.create({ data: createQuestionData });
 }
 
+async function selectAllQuestions() {
+    const questions = await prisma.question.findMany();
+    return questions;
+}
+
 const questionRepository = {
-    insertQuestion
+    insertQuestion,
+    selectAllQuestions
 };
 
 export default questionRepository;

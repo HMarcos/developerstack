@@ -9,7 +9,11 @@ export async function create(req: Request, res: Response) {
 }
 
 export async function answer(req: Request, res: Response) {
-  // TODO
+  const { id } = req.params;
+  const questionId = Number(id);
+  const { answer }: { answer: string } = req.body;
+  await answerService.answer(answer, questionId);
+  res.sendStatus(201);
 }
 
 export async function get(req: Request, res: Response) {
